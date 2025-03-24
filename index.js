@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // ✅ Enable CORS for frontend requests
 app.use(
@@ -15,6 +16,7 @@ app.use(
     origin: "http://localhost:3000",
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders: "Content-Type, Authorization",
+    credentials: true,
   })
 );
 
@@ -31,7 +33,7 @@ const JWT_SECRET =
   "f25a9d62a6bff5d5e2e8e4daebfa86327d1b214f736dc2c5c38a863ff7ef7e0b";
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Welcome to this API this is a simple API developed for a Project!");
 });
 
 //Login API functionality
