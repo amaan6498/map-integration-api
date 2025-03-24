@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-
+import cors from "cors";
 import authenticateToken from "./middleware/auth.js";
 
 const app = express();
