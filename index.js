@@ -9,6 +9,18 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// ✅ Enable CORS for frontend requests
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET, POST, PUT, DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+  })
+);
+
+// ✅ Handle preflight requests (important for CORS)
+app.options("*", cors());
+
 const users = [
   { id: 1, username: "Amaan", password: "Sample1" },
   { id: 2, username: "Abrar", password: "Sample2" },
