@@ -14,7 +14,10 @@ app.use(cookieParser());
 // ✅ Enable CORS for frontend requests
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // Allow non-browser requests (e.g., Postman)
+      callback(null, true); // ✅ Allow all origins dynamically
+    },
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders: "Content-Type, Authorization",
     credentials: true,
