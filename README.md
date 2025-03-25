@@ -47,7 +47,7 @@ Replace `your_secret_key_here` with a strong secret key for JWT authentication.
 ### 1. Start the Server
 
 ```sh
-npm start
+node index.js
 ```
 
 OR for development with auto-restart on changes:
