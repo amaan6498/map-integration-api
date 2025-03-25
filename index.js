@@ -53,7 +53,7 @@ app.post("/api/login", async (req, res) => {
   const token = jwt.sign(
     { userId: user.id, username: user.username },
     JWT_SECRET,
-    { expiresIn: "1h" }
+    { expiresIn: "24h" }
   );
   res.json({ message: "Login successful", token });
 });
@@ -61,60 +61,72 @@ app.post("/api/login", async (req, res) => {
 //Dashboard API functionality
 app.get("/api/dashboard", authenticateToken, (req, res) => {
   const SampleDashboardData = {
-    cards: [
+    mapMarkers: [
       {
         id: 1,
-        title: "Total Users",
-        value: 1200,
-        icon: "users",
-        trend: "up",
-        trendValue: 15,
-        description: "Increase in users compared to last month",
+        name: "Eiffel Tower",
+        type: "landmark",
+        coordinates: [48.8584, 2.2945],
+        description: "Iconic iron tower in Paris, France.",
+        icon: "monument",
+        status: "popular",
+        imageUrl:
+          "https://images.unsplash.com/photo-1431274172761-fca41d930114?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWlmZmVsJTIwdG93ZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       },
       {
         id: 2,
-        title: "Revenue",
-        value: "$45,000",
-        icon: "dollar",
-        trend: "up",
-        trendValue: 10,
-        description: "Increase in revenue compared to last month",
+        name: "Shibuya Crossing",
+        type: "attraction",
+        coordinates: [35.6586, 139.7016],
+        description: "Famous pedestrian scramble in Tokyo.",
+        icon: "crossing",
+        status: "busy",
+        imageUrl:
+          "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpYnV5YSUyMGNyb3NzaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
       },
       {
         id: 3,
-        title: "Active Projects",
-        value: 45,
-        icon: "projects",
-        trend: "down",
-        trendValue: 5,
-        description: "Decrease in active projects compared to last month",
+        name: "Grand Canyon",
+        type: "natural",
+        coordinates: [36.107, -112.113],
+        description: "Massive canyon in Arizona, USA.",
+        icon: "park",
+        status: "active",
+        imageUrl:
+          "https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhbmQlMjBjYW55b258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       },
       {
         id: 4,
-        title: "Customer Satisfaction",
-        value: "92%",
-        icon: "smile",
-        trend: "up",
-        trendValue: 3,
-        description: "Increase in customer satisfaction compared to last month",
+        name: "Sydney Opera House",
+        type: "landmark",
+        coordinates: [-33.8568, 151.2153],
+        description: "Architectural masterpiece in Australia.",
+        icon: "theater",
+        status: "active",
+        imageUrl:
+          "https://images.unsplash.com/photo-1523428096881-5bd79d043006?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3lkbmV5JTIwb3BlcmElMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       },
       {
         id: 5,
-        title: "Support Tickets",
-        value: 120,
-        icon: "ticket",
-        trend: "down",
-        trendValue: 8,
-        description: "Decrease in support tickets compared to last month",
+        name: "Machu Picchu",
+        type: "historical",
+        coordinates: [-13.1631, -72.545],
+        description: "Incan citadel in the Andes.",
+        icon: "ruins",
+        status: "protected",
+        imageUrl:
+          "https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjaHUlMjBwaWNjaHV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       },
       {
         id: 6,
-        title: "Website Visits",
-        value: "12,000",
-        icon: "globe",
-        trend: "up",
-        trendValue: 20,
-        description: "Increase in website visits compared to last month",
+        name: "Times Square",
+        type: "attraction",
+        coordinates: [40.758, -73.9855],
+        description: "Vibrant hub in New York City.",
+        icon: "square",
+        status: "crowded",
+        imageUrl:
+          "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGltZXMlMjBzcXVhcmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       },
     ],
   };
