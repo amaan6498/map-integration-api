@@ -69,7 +69,7 @@ app.get("/api/dashboard", authenticateToken, (req, res) => {
       {
         id: 1,
         title: "Delhi",
-        value: 20000,
+        value: "20,000",
         icon: "ticket",
         trend: "up",
         trendValue: 15,
@@ -87,7 +87,7 @@ app.get("/api/dashboard", authenticateToken, (req, res) => {
       {
         id: 3,
         title: "Mumbai",
-        value: 45000,
+        value: "45,000",
         icon: "ticket",
         trend: "down",
         trendValue: 5,
